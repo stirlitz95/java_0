@@ -1,4 +1,5 @@
 package ru.stqa.pft.home2;
+import static java.lang.Math.*;
 
 public class Point {
 
@@ -15,7 +16,7 @@ public class Point {
   }
 
   public double area () {
-    return Math.sqrt(Math.pow((this.x2 - this.x1),2.0) + Math.pow((this.y2 - this.y1),2.0));
+    return sqrt(pow((this.x2 - this.x1),2.0) + pow((this.y2 - this.y1),2.0));
   }
 
 }
