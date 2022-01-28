@@ -1,10 +1,10 @@
 package ru.stqa.pft.sandbox;
 
-public class Square {
+public class Squrae {
 
   public double l;
 
-  public Square(double len) {
+  public Squrae(double len) {
     this.l = len;
   }
 

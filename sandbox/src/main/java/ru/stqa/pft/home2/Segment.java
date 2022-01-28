@@ -1,4 +1,4 @@
-package ru.stqa.pft.home;
+package ru.stqa.pft.home2;
 
 public class Segment {
   public static void main(String[] args){

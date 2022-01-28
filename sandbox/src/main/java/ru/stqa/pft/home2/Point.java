@@ -1,4 +1,4 @@
-package ru.stqa.pft.home;
+package ru.stqa.pft.home2;
 import static java.lang.Math.*;
 
 public class Point {
