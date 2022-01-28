@@ -3,7 +3,9 @@ package ru.stqa.pft.home2;
 public class Segment {
   public static void main(String[] args){
 
-    Point d = new Point(1,1,5,5);
-    System.out.println("Расстояние между двумя точками " + d.x1 + " : " + d.y1 + " и " + d.x2 + " : " + d.y2 + " = " + d.area ());
+    Point p1 = new Point(1,1);
+    Point p2 = new Point(10,10);
+    System.out.println();
+    System.out.println("Расстояние между двумя точками " + p1.x + " : " + p1.y + " и " + p2.x + " : " + p2.y + " = " + Point.distance(p1, p2));
   }
 }
