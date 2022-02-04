@@ -38,8 +38,8 @@ public class NewContactTest {
   @Test
   public void testNewContact() throws Exception {
     gotoAddNew();
-    fillContact(new GroupContact("Имя", "Отчeство", "Фамилия", "880005553535", "xxx.ru"));
-    submitCjntact();
+    fillContact(new ContactData("Имя", "Отчeство", "Фамилия", "880005553535", "xxx.ru"));
+    submitContact();
     dotoHome();
     gotoLogout();
   }
@@ -52,26 +52,26 @@ public class NewContactTest {
     wd.findElement(By.linkText("home page")).click();
   }
 
-  private void submitCjntact() {
+  private void submitContact() {
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  private void fillContact(GroupContact groupContact) {
+  private void fillContact(ContactData contactData) {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys(groupContact.getName());
+    wd.findElement(By.name("firstname")).sendKeys(contactData.getName());
     wd.findElement(By.name("middlename")).click();
     wd.findElement(By.name("middlename")).clear();
-    wd.findElement(By.name("middlename")).sendKeys(groupContact.getMiddleName());
+    wd.findElement(By.name("middlename")).sendKeys(contactData.getMiddleName());
     wd.findElement(By.name("lastname")).click();
     wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys(groupContact.getLastName());
+    wd.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
     wd.findElement(By.name("home")).click();
     wd.findElement(By.name("home")).clear();
-    wd.findElement(By.name("home")).sendKeys(groupContact.getTelephoneHome());
+    wd.findElement(By.name("home")).sendKeys(contactData.getTelephoneHome());
     wd.findElement(By.name("email")).click();
     wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys(groupContact.getMail());
+    wd.findElement(By.name("email")).sendKeys(contactData.getMail());
   }
 
   private void gotoAddNew() {
