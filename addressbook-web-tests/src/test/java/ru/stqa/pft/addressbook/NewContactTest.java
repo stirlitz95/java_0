@@ -13,14 +13,11 @@ import java.util.concurrent.TimeUnit;
 
 public class NewContactTest {
   private WebDriver wd;
-//  private JavascriptExecutor js;
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
-//    System.setProperty("webdriver.chrome.driver", "");
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-//    js = (JavascriptExecutor) driver;
     wd.get("http://localhost/addressbook/edit.php");
     login("admin", "secret");
   }
