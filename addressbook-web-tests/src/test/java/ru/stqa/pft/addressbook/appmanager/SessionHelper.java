@@ -3,12 +3,11 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class SessionHelper {
-  private WebDriver wd;
+public class SessionHelper extends HelperBase {
 
   public SessionHelper(WebDriver wd) {
 
-    this.wd = wd;
+    super(wd);
   }
 
   public void login(String username, String password) {
