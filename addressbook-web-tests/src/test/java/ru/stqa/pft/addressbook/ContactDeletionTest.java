@@ -18,11 +18,11 @@ public class ContactDeletionTest {
   public void setUp() throws Exception {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    wd.get("http://localhost/addressbook/");
+    login();
   }
 
-  @Test
-  public void testContactDeletion() throws Exception {
-    wd.get("http://localhost/addressbook/");
+  private void login() {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys("admin");
@@ -30,15 +30,38 @@ public class ContactDeletionTest {
     wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys("secret");
     wd.findElement(By.xpath("//input[@value='Login']")).click();
-    wd.findElement(By.linkText("home")).click();
-    wd.findElement(By.name("selected[]")).click();
-    wd.findElement(By.xpath("//input[@value='Delete']")).click();
+  }
+
+  @Test
+  public void testContactDeletion() throws Exception {
+    gotoContactPage();
+    //выбор контакта (на удаление)
+    initContactSelected();
+    //нажатие кнопки Delite ля удаления выбранного контакта
+    deleteSelectedContact();
+    //закрытие диалогового окна которое появляется при удалении контакта
+    returnToContactPage();
+  }
+
+  private void returnToContactPage() {
     wd.switchTo().alert().accept();
-    wd.findElement(By.linkText("Logout")).click();
+  }
+
+  private void deleteSelectedContact() {
+    wd.findElement(By.xpath("//input[@value='Delete']")).click();
+  }
+
+  private void initContactSelected() {
+    wd.findElement(By.name("selected[]")).click();
+  }
+
+  private void gotoContactPage() {
+    wd.findElement(By.linkText("home")).click();
   }
 
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
+    wd.findElement(By.linkText("Logout")).click();
     wd.quit();
   }
 
