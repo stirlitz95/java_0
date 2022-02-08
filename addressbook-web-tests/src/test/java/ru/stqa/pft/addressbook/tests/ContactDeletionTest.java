@@ -60,7 +60,7 @@ public class ContactDeletionTest extends TestBase {
   }
 
   @AfterMethod(alwaysRun = true)
-  public void tearDown() throws Exception {
+  public void tearDown() {
     wd.findElement(By.linkText("Logout")).click();
     wd.quit();
   }
