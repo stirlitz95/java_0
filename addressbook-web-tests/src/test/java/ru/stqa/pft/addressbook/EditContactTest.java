@@ -52,22 +52,22 @@ public class EditContactTest {
     wd.findElement(By.linkText("home page")).click();
   }
 
-  private void editContact(String NewName, String NewMiddleName, String NewLastName, String NewTelephoneHome, String NewEmail) {
+  private void editContact(String name, String middleName, String lastName, String telephoneHome, String email) {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys(NewName);
+    wd.findElement(By.name("firstname")).sendKeys(name);
     wd.findElement(By.name("middlename")).click();
     wd.findElement(By.name("middlename")).clear();
-    wd.findElement(By.name("middlename")).sendKeys(NewMiddleName);
+    wd.findElement(By.name("middlename")).sendKeys(middleName);
     wd.findElement(By.name("lastname")).click();
     wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys(NewLastName);
+    wd.findElement(By.name("lastname")).sendKeys(lastName);
     wd.findElement(By.name("home")).click();
     wd.findElement(By.name("home")).clear();
-    wd.findElement(By.name("home")).sendKeys(NewTelephoneHome);
+    wd.findElement(By.name("home")).sendKeys(telephoneHome);
     wd.findElement(By.name("email")).click();
     wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys(NewEmail);
+    wd.findElement(By.name("email")).sendKeys(email);
   }
 
   private void initContactEdit() {
