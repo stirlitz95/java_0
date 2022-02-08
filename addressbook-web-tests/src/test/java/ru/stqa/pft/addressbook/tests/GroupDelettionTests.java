@@ -4,8 +4,6 @@ import org.testng.annotations.Test;
 
 public class GroupDelettionTests extends TestBase{
 
-
-
   @Test
   public void testGroupDelettion() throws Exception {
     app.getNavigationHelper().gotoGroupPage();

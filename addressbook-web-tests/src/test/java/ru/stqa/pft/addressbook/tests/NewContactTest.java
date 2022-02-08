@@ -12,7 +12,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
-public class NewContactTest {
+public class NewContactTest extends TestBase{
   private WebDriver wd;
 
   @BeforeMethod(alwaysRun = true)
