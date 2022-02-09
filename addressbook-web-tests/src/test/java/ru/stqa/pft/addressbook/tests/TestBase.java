@@ -7,7 +7,8 @@ import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 
 public class TestBase {
 
-  protected final ApplicationManager app = new ApplicationManager(BrowserType.EDGE);
+  //в (BrowserType.CHROME) выбирается через какой браузер выполнять тест
+  protected final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
