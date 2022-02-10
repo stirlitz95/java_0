@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class ContactDeletionTest extends TestBase {
+public class ContactDeletion extends TestBase {
   private WebDriver wd;
 
   @BeforeMethod(alwaysRun = true)
