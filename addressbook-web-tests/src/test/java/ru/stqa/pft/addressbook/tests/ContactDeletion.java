@@ -7,13 +7,13 @@ public class ContactDeletion extends TestBase {
 
   @Test
   public void testContactDeletion() throws Exception {
-    app.gotoContactPage();
+    app.getNavigationHelper().gotoContactPage();
     //выбор контакта (на удаление)
-    app.initContactSelected();
+    app.getContactHelper().initContactSelected();
     //нажатие кнопки Delite ля удаления выбранного контакта
-    app.deleteSelectedContact();
+    app.getContactHelper().deleteSelectedContact();
     //закрытие диалогового окна которое появляется при удалении контакта
-    app.returnToContactPage();
+//    app.getContactHelper().returnToContactPage(); // работает без этой строчки
   }
 
 
