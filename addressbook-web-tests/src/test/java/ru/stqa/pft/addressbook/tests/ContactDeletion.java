@@ -12,8 +12,6 @@ public class ContactDeletion extends TestBase {
     app.getContactHelper().initContactSelected();
     //нажатие кнопки Delite ля удаления выбранного контакта
     app.getContactHelper().deleteSelectedContact();
-    //закрытие диалогового окна которое появляется при удалении контакта
-//    app.getContactHelper().returnToContactPage(); // работает без этой строчки
   }
 
 
