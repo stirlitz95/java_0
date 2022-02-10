@@ -10,7 +10,6 @@ public class TestBase {
   //в (BrowserType.CHROME) выбирается через какой браузер выполнять тест
   public final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
 
-
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
     app.init();

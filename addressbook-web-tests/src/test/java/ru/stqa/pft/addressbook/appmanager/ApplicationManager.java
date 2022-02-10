@@ -53,7 +53,6 @@ public class ApplicationManager {
     return groupHelper;
   }
 
-
   public void gotoLogout() {
     wd.findElement(By.linkText("Logout")).click();
   }

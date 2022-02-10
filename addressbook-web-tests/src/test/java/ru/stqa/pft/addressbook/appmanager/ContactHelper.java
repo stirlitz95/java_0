@@ -15,7 +15,6 @@ public class ContactHelper extends HelperBase{
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-
   public void fillContact(ContactData contactData) {
     type(By.name("firstname"), contactData.getName());
     type(By.name("middlename"), contactData.getMiddleName());
@@ -24,12 +23,9 @@ public class ContactHelper extends HelperBase{
     type(By.name("email"), contactData.getMail());
   }
 
-
   public void updateContact() {
     click(By.name("update"));
   }
-
-//  public void returnToContactPage() { wd.switchTo().alert().accept();  }
 
   public void deleteSelectedContact() {
     click(By.xpath("//input[@value='Delete']"));

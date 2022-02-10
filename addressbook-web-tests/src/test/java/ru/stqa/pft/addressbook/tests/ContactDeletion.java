@@ -13,6 +13,4 @@ public class ContactDeletion extends TestBase {
     //нажатие кнопки Delite ля удаления выбранного контакта
     app.getContactHelper().deleteSelectedContact();
   }
-
-
 }

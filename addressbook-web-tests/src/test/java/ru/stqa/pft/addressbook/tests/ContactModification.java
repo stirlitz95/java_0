@@ -13,7 +13,6 @@ public class ContactModification extends TestBase {
     app.getContactHelper().editContact("ИмяНовое", "ОтчeствоНовое", "ФамилияНовое", "880005550000", "yyy.ru");
     //фиксирование изменений нажатием кнопки "update"
     app.getContactHelper().updateContact();
-//    app.returnToContactPage(); //без это строчки работает без ошибки
   }
 
 }
