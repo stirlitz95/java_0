@@ -39,4 +39,7 @@ public class HelperBase {
       return false;
     }
   }
+
+  // закрытие диалогового окна которое появляется при удалении контакта (поп апное окошко)
+  public void returnToContactPage() { wd.switchTo().alert().accept(); }
 }

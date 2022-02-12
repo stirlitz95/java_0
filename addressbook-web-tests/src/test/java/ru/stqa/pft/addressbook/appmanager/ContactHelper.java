@@ -29,6 +29,7 @@ public class ContactHelper extends HelperBase{
 
   public void deleteSelectedContact() {
     click(By.xpath("//input[@value='Delete']"));
+//    wd.switchTo().alert().accept();
   }
 
   public void initContactSelected() {
@@ -46,4 +47,5 @@ public class ContactHelper extends HelperBase{
   public void initContactEdit() {
     click(By.xpath("//img[@alt='Edit']"));
   }
+
 }
