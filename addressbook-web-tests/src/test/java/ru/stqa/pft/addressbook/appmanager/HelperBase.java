@@ -18,8 +18,16 @@ public class HelperBase {
 
   protected void type(By locator, String text) {
     click(locator);
-    wd.findElement(locator).clear();
-    wd.findElement(locator).sendKeys(text);
+    //если текст не равен null то заполняем поле ввода
+    if (text != null) {
+      //если текст оказался не null тогда извлекаем из поля то значение что в нем хранится
+      String existingText = wd.findElement(locator).getAttribute("value");
+      // если не верно, что текст совпадает с уже  существующим текстом тогда выполняем какие-то действия с этим полем ввода
+      if (!text.equals(existingText)) {
+        wd.findElement(locator).clear();
+        wd.findElement(locator).sendKeys(text);
+      }
+    }
   }
 
   public boolean isElementPresent(By by) {
@@ -41,5 +49,7 @@ public class HelperBase {
   }
 
   // закрытие диалогового окна которое появляется при удалении контакта (поп апное окошко)
-  public void returnToContactPage() { wd.switchTo().alert().accept(); }
+  public void returnToContactPage() {
+    wd.switchTo().alert().accept();
+  }
 }
