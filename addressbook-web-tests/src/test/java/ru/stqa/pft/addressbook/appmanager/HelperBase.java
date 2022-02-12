@@ -39,10 +39,13 @@ public class HelperBase {
     }
   }
 
+  //метод позволяет проверить наличие диалового окна, если оно есть, то ты на нег переключишься, а если его нет появляется ошибка "NoAlertPresentException"
   public boolean isAlertPresent() {
+    //попытаться перехватить
     try {
       wd.switchTo().alert();
       return true;
+    //а если не получилось, то перехвать исключение (в скобках тип исключения которое собираешься перехватывать (а если оно будет другого типа, то она перехвачено не будет))
     } catch (NoAlertPresentException e) {
       return false;
     }
