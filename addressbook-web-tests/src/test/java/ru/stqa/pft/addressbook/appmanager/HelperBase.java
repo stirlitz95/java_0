@@ -52,7 +52,7 @@ public class HelperBase {
   }
 
   // закрытие диалогового окна которое появляется при удалении контакта (поп апное окошко)
-  public void returnToContactPage() {
+  public void approveDeletion() {
     wd.switchTo().alert().accept();
   }
 }
