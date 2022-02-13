@@ -36,7 +36,9 @@ public class ApplicationManager {
       wd = new EdgeDriver();
     }
 
-    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+    //это таймаут ожидания появления элемента который должне отсутствовать
+    wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
     groupHelper = new GroupHelper(wd);
     contactHelper = new ContactHelper(wd);

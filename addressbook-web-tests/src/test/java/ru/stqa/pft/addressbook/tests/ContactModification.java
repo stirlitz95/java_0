@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.Test;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactModification extends TestBase {
 
@@ -10,7 +11,7 @@ public class ContactModification extends TestBase {
     //выбор контакта на изменение (нажание сразу на значек изменения нужного контакта)
     app.getContactHelper().initContactEdit();
     //внесение изменений в выбранный контакт
-    app.getContactHelper().editContact("ИмяНовое", "ОтчeствоНовое", "ФамилияНовое", "880005550000", "yyy.ru");
+    app.getContactHelper().fillContact(new ContactData("ИмяНовое", "ОтчeствоНовое", "ФамилияНовое", "880005550000", "yyy.ru", null), false);
     //фиксирование изменений нажатием кнопки "update"
     app.getContactHelper().updateContact();
   }
