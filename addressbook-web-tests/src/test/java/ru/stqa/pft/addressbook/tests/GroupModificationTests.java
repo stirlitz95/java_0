@@ -8,6 +8,10 @@ public class GroupModificationTests extends TestBase {
   @Test
   public void testGroupModification () {
     app.getNavigationHelper().gotoGroupPage();
+    //если не существует никакой группы, то сделай ее
+    if (! app.getGroupHelper().isThereAGroup()){
+      app.getGroupHelper().createGrup(new GroupData("555", null, "555"));
+    }
     app.getGroupHelper().selectGroup();
     app.getGroupHelper().initGroupModification();
     app.getGroupHelper().fillGroupFrom(new GroupData("666", "666", "666"));

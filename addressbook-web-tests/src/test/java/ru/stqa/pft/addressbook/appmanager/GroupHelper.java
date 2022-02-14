@@ -6,6 +6,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 
 public class GroupHelper extends HelperBase {
 
+
   public GroupHelper(WebDriver wd) {
     super(wd);
   }
@@ -42,5 +43,18 @@ public class GroupHelper extends HelperBase {
 
   public void submitGroupModification() {
     click(By.name("update"));
+  }
+
+  //создание группы (применяется на случай есои где-то нужно создать группу кроме как GroupCreationTests)
+  public void createGrup(GroupData group) {
+    initGroupCreation();
+    fillGroupFrom(group);
+    submitGroupCreation();
+    returnToGroupPage();
+  }
+
+  //выполняется проверка какого-то элемента
+  public boolean isThereAGroup (){
+    return isElementPresent(By.name("selected[]"));
   }
 }
