@@ -8,6 +8,10 @@ public class ContactModification extends TestBase {
   @Test
   public void testEditContact() throws Exception {
     app.getNavigationHelper().gotoContactPage();
+    //если не существует никакого контакта, то сделай его
+    if (! app.getContactHelper().isThereAContact()){
+      app.getContactHelper().createContact(new ContactData("Имя", "Отчeство", "Фамилия", "880005553535", "xxx.ru"));
+    }
     //выбор контакта на изменение (нажание сразу на значек изменения нужного контакта)
     app.getContactHelper().initContactEdit();
     //внесение изменений в выбранный контакт

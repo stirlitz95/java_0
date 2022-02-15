@@ -9,10 +9,9 @@ public class ContactDeletion extends TestBase {
   @Test
   public void testContactDeletion() throws Exception {
     app.getNavigationHelper().gotoContactPage();
-    ////если не существует никакого контакта, то сделай его
+    //если не существует никакого контакта, то сделай его
     if (! app.getContactHelper().isThereAContact()){
       app.getContactHelper().createContact(new ContactData("Имя", "Отчeство", "Фамилия", "880005553535", "xxx.ru"));
-//      app.getNavigationHelper().gotoContactPage();
     }
     //выбор контакта (на удаление)
     app.getContactHelper().initContactSelected();

@@ -66,7 +66,8 @@ public class ContactHelper extends HelperBase {
   //вызвал NavigationHelper чтобы заработала строчка gotoA.gotoAddNew();
   NavigationHelper gotoA = new NavigationHelper(wd);
 
-  //создаю новый контакт в случае выполнения теста нв удаления "ContactDeletion", а удалять нечего (так же учитывая отсутствие группы, поскольку группы тоже могут быть не созданы)
+  //создаю новый контакт в случае выполнения теста на удаление контакта "ContactDeletion", а удалять нечего (так же учитывая отсутствие группы, поскольку группы тоже могут быть не созданы)
+  //создаю новый контакт в случае выполнения теста на модификацию контакта "ContactModification", а модифицировать нечего (так же учитывая отсутствие группы, поскольку группы тоже могут быть не созданы)
   public void createContact(ContactData contactData) {
     gotoA.gotoAddNew();
     fillContact(contactData);
