@@ -13,11 +13,11 @@ public class HelperBase {
   }
 
 
-  protected void click(By locator) {
+  public void click(By locator) {
     wd.findElement(locator).click();
   }
 
-  protected void type(By locator, String text) {
+  public void type(By locator, String text) {
     click(locator);
     //если текст не равен null то заполняем поле ввода
     if (text != null) {

@@ -32,6 +32,15 @@ public class ContactHelper extends HelperBase {
     }
   }
 
+  //используется в public void createContact чтобы не использовать условие выбора (boolean) в "public void fillContact(ContactData contactData, boolean creation)"
+  public void fillContact(ContactData contactData) {
+    type(By.name("firstname"), contactData.getName());
+    type(By.name("middlename"), contactData.getMiddleName());
+    type(By.name("lastname"), contactData.getLastName());
+    type(By.name("home"), contactData.getTelephoneHome());
+    type(By.name("email"), contactData.getMail());
+  }
+
   public void updateContact() {
     click(By.name("update"));
   }
@@ -44,17 +53,27 @@ public class ContactHelper extends HelperBase {
     click(By.name("selected[]"));
   }
 
-  //временно отключаю и использую повторно в ContactModification метод fillContact
-//  public void editContact(String name, String middleName, String lastName, String telephoneHome, String email) {
-//    type(By.name("firstname"), name);
-//    type(By.name("middlename"), middleName);
-//    type(By.name("lastname"), lastName);
-//    type(By.name("home"), telephoneHome);
-//    type(By.name("email"), email);
-//  }
 
   public void initContactEdit() {
     click(By.xpath("//img[@alt='Edit']"));
   }
 
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
+
+  //вызвал NavigationHelper чтобы заработала строчка gotoA.gotoAddNew();
+  NavigationHelper gotoA = new NavigationHelper(wd);
+
+  //создаю новый контакт в случае выполнения теста нв удаления "ContactDeletion", а удалять нечего (так же учитывая отсутствие группы, поскольку группы тоже могут быть не созданы)
+  public void createContact(ContactData contactData) {
+    gotoA.gotoAddNew();
+    fillContact(contactData);
+    submitContact();
+    gotoA.gotoHome();
+
+
+
+  }
 }

@@ -1,11 +1,11 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  private final String name;
-  private final String middleName;
-  private final String lastName;
-  private final String telephoneHome;
-  private final String mail;
+  private String name;
+  private String middleName;
+  private String lastName;
+  private String telephoneHome;
+  private String mail;
   private String group;
 
   public ContactData(String name, String middleName, String lastName, String telephoneHome, String mail, String group) {
@@ -17,9 +17,16 @@ public class ContactData {
     this.group = group;
   }
 
-  public String getName() {
-    return name;
+  //использовать если тесту мешает отсутствие группы ("String group" в public ContactData)
+  public ContactData(String name, String middleName, String lastName, String telephoneHome, String mail) {
+    this.name = name;
+    this.middleName = middleName;
+    this.lastName = lastName;
+    this.telephoneHome = telephoneHome;
+    this.mail = mail;
   }
+
+  public String getName() { return name; }
 
   public String getMiddleName() {
     return middleName;

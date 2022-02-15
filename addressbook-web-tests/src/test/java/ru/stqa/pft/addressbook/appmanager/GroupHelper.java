@@ -46,7 +46,7 @@ public class GroupHelper extends HelperBase {
   }
 
   //создание группы (применяется на случай есои где-то нужно создать группу кроме как GroupCreationTests)
-  public void createGrup(GroupData group) {
+  public void createGroup(GroupData group) {
     initGroupCreation();
     fillGroupFrom(group);
     submitGroupCreation();
