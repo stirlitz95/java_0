@@ -38,7 +38,7 @@ public class ApplicationManager {
 
 
     //это таймаут ожидания появления элемента который должне отсутствовать
-    wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
     groupHelper = new GroupHelper(wd);
     contactHelper = new ContactHelper(wd);
