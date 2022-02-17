@@ -4,26 +4,28 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.List;
+
 public class GroupModificationTests extends TestBase {
 
   @Test
   public void testGroupModification () {
     app.getNavigationHelper().gotoGroupPage();
-    //получаем список групп до модификации
-    int before = app.getGroupHelper().getGroupCount();
     //если не существует никакой группы, то сделай ее
     if (! app.getGroupHelper().isThereAGroup()){
       app.getGroupHelper().createGroup(new GroupData("555", null, "555"));
     }
-    app.getGroupHelper().selectGroup(before - 1);
+    //получение размеров списка с помощью метода "getGroupList()" до создания группы
+    List<GroupData> before = app.getGroupHelper().getGroupList();
+    app.getGroupHelper().selectGroup(before.size() - 1);
     app.getGroupHelper().initGroupModification();
     app.getGroupHelper().fillGroupFrom(new GroupData("666", "666", "666"));
     app.getGroupHelper().submitGroupModification();
     app.getGroupHelper().returnToGroupPage();
-    ////получаем список групп после модификации
-    int after = app.getGroupHelper().getGroupCount();
+    //получение размеров списка с помощью метода "getGroupList()" после создания группы
+    List<GroupData> after = app.getGroupHelper().getGroupList();
     //выполняем проверку, что количество групп должно совпадать с начальным количеством
-    Assert.assertEquals(after, before);
+    Assert.assertEquals(after.size(), before.size());
 
   }
 }
