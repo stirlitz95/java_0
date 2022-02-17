@@ -17,6 +17,7 @@ public class GroupDelettionTests extends TestBase {
     }
     //получение размеров списка с помощью метода "getGroupList()" до создания группы
     List<GroupData> before = app.getGroupHelper().getGroupList();
+    //метод берет последнюю группу по индексу "before.size() - 1" ( "- 1" потому что нумерация начинается с "0")
     app.getGroupHelper().selectGroup(before.size() - 1);
     app.getGroupHelper().deleteSelectedGroups();
     app.getGroupHelper().returnToGroupPage();

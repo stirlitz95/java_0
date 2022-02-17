@@ -75,7 +75,9 @@ public class GroupHelper extends HelperBase {
     //проход по элементам в цикле
     for (WebElement element : elements){
       String name = element.getText();
-      GroupData group = new GroupData(name, null, null);
+      //ищем элемент в нутри другого / этот идентификатор передаем в конструктор, он используется при сравнении
+      String id = element.findElement(By.tagName("input")).getAttribute("value");
+      GroupData group = new GroupData(id, name, null, null);
       //добавляем созданный объект в список
       groups.add(group);
     }
