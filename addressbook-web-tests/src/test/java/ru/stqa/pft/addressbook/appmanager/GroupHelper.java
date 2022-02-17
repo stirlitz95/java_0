@@ -59,7 +59,7 @@ public class GroupHelper extends HelperBase {
   }
 
   //выполняется проверка какого-то элемента
-  public boolean isThereAGroup (){
+  public boolean isThereAGroup() {
     return isElementPresent(By.name("selected[]"));
   }
 
@@ -73,10 +73,10 @@ public class GroupHelper extends HelperBase {
     //получение списка объектов типа "WebElement"/ найти все элементы которые имеют тег "span" и класс "group"
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     //проход по элементам в цикле
-    for (WebElement element : elements){
+    for (WebElement element : elements) {
       String name = element.getText();
       //ищем элемент в нутри другого / этот идентификатор передаем в конструктор, он используется при сравнении
-      String id = element.findElement(By.tagName("input")).getAttribute("value");
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       GroupData group = new GroupData(id, name, null, null);
       //добавляем созданный объект в список
       groups.add(group);

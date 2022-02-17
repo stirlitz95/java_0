@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class GroupData {
   //тут атрибуты
-  private final String id;
+  private int id;
   private final String name;
   private final String header;
   private final String footer;
@@ -12,14 +12,14 @@ public class GroupData {
   //это конструктор без индентификатора в качестве параметра (присваиваем null в качестве идентификатора)
   public GroupData( String name, String header, String footer) {
     //далее идет присваивание значения параметра в атрибут в поле обекта
-    this.id = null; // эта переменная не прочитана из веб интерфейса, а создана искусственно
+    this.id = 0; // эта переменная не прочитана из веб интерфейса, а создана искусственно
     this.name = name;
     this.header = header;
     this.footer = footer;
   }
 
   //это конструктор
-  public GroupData(String id, String name, String header, String footer) {
+  public GroupData(int id, String name, String header, String footer) {
     //далее идет присваивание значения параметра в атрибут в поле обекта
     this.id = id;
     this.name = name;
@@ -27,7 +27,7 @@ public class GroupData {
     this.footer = footer;
   }
 
-  public String getId() { return id; }
+  public int getId() { return id; }
 
   public String getName() {
     return name;
@@ -40,6 +40,8 @@ public class GroupData {
   public String getFooter() {
     return footer;
   }
+
+  public void setId(int id) { this.id = id; }
 
   @Override
   //это метод equals, при сравнении объектов он будет сравнивать их атрибуты (тут в частности это name и id) //но все работало и без этого
