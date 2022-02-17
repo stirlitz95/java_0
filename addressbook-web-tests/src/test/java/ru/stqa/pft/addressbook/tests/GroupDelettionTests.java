@@ -24,6 +24,13 @@ public class GroupDelettionTests extends TestBase {
     List<GroupData> after = app.getGroupHelper().getGroupList();
     //выполняем проверку, что количество групп уменьшилось на 1
     Assert.assertEquals(after.size(), before.size() - 1);
+
+    //теперь должно получиться два одинаковых списка, поскольку переменная before ссылается не на оригинальный (старый) список
+    //а на старый список в котором удален ненужный элемент (удаляем старое по индексу "(before.size() - 1)")
+    before.remove(before.size() - 1); //теперь старый список должен содержать то же самое, что и новый
+    //теперь сравниваются два списка, новый и тот что переопределили как старый "before.remove(before.size() - 1)"
+    Assert.assertEquals(before, after);
+
   }
 
 }
