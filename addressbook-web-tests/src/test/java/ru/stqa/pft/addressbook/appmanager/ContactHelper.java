@@ -49,8 +49,9 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//input[@value='Delete']"));
   }
 
-  public void initContactSelected() {
-    click(By.name("selected[]"));
+  public void initContactSelected(int index) {
+    //работаем со списком элементов который находим по локатору "By.name("selected[]")", среди элементов находим нужный по индексу "get(index)" и нажимаем клик
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
 

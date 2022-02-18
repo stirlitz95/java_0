@@ -18,7 +18,7 @@ public class ContactDeletion extends TestBase {
     //проверяем кол-во контактов до удаления
     int before = app.getContactHelper().getContactCount();
     //выбор контакта (на удаление)
-    app.getContactHelper().initContactSelected();
+    app.getContactHelper().initContactSelected(before - 1);
     //нажатие кнопки Delite ля удаления выбранного контакта
     app.getContactHelper().deleteSelectedContact();
     // закрытие диалогового окна которое появляется при удалении контакта (поп апное окошко)
