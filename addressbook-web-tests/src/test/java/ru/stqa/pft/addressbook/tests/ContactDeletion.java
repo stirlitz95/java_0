@@ -14,13 +14,13 @@ public class ContactDeletion extends TestBase {
     //переходим на станицу с контактами
     app.getNavigationHelper().gotoContactPage();
     //если не существует никакого контакта, то сделай его
-    if (! app.getContactHelper().isThereAContact()){
+    if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Имя", "Отчeство", "Фамилия", "880005553535", "xxx.ru"));
     }
     //проверяем кол-во контактов до удаления
     List<ContactData> before = app.getContactHelper().getContactList();
     //выбор контакта (на удаление)
-    app.getContactHelper().initContactSelected(before.size()- 1);
+    app.getContactHelper().initContactSelected(before.size() - 1);
     //нажатие кнопки Delite ля удаления выбранного контакта
     app.getContactHelper().deleteSelectedContact();
     // закрытие диалогового окна которое появляется при удалении контакта (поп апное окошко)
@@ -31,5 +31,11 @@ public class ContactDeletion extends TestBase {
     List<ContactData> after = app.getContactHelper().getContactList();
     //сравниваем кол-во контактов до и после удаления
     Assert.assertEquals(after.size(), before.size() - 1);
+
+    //заставляем считать старый список за новый
+    before.remove(before.size() - 1);
+    //и теперь сравниваем два списка (благодаря предыдущей строчке они должны быть одинаковы)
+    Assert.assertEquals(before, after);
+
   }
 }
