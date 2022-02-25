@@ -2,9 +2,13 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
@@ -26,7 +30,7 @@ public class ContactHelper extends HelperBase {
     //если это элемент создания, то элемент "new_group" должен быть
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-      //в если этого нето, значит это изменение и этого элемента быть не должно
+      //в если этого не то, значит это изменение и этого элемента быть не должно
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -78,5 +82,18 @@ public class ContactHelper extends HelperBase {
 
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
+  }
+
+  //сравнивание списков контактов
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> elements = wd.findElements(By.name("selected[]"));
+    for (WebElement element : elements) {
+      String name = element.getText();
+      ContactData contact = new ContactData("Имя", "Отчeство", null, null, null, null);
+      //добавляем созданный объект в список
+      contacts.add(contact);
+    }
+    return contacts;
   }
 }

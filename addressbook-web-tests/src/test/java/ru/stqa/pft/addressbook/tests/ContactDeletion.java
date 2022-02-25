@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.List;
+
 public class ContactDeletion extends TestBase {
 
 
@@ -16,9 +18,9 @@ public class ContactDeletion extends TestBase {
       app.getContactHelper().createContact(new ContactData("Имя", "Отчeство", "Фамилия", "880005553535", "xxx.ru"));
     }
     //проверяем кол-во контактов до удаления
-    int before = app.getContactHelper().getContactCount();
+    List<ContactData> before = app.getContactHelper().getContactList();
     //выбор контакта (на удаление)
-    app.getContactHelper().initContactSelected(before - 1);
+    app.getContactHelper().initContactSelected(before.size()- 1);
     //нажатие кнопки Delite ля удаления выбранного контакта
     app.getContactHelper().deleteSelectedContact();
     // закрытие диалогового окна которое появляется при удалении контакта (поп апное окошко)
@@ -26,8 +28,8 @@ public class ContactDeletion extends TestBase {
     //переходим на станицу с контактами
     app.getNavigationHelper().gotoContactPage();
     //проверяем кол-во контактов после удаления
-    int after = app.getContactHelper().getContactCount();
+    List<ContactData> after = app.getContactHelper().getContactList();
     //сравниваем кол-во контактов до и после удаления
-    Assert.assertEquals(after, before - 1);
+    Assert.assertEquals(after.size(), before.size() - 1);
   }
 }
