@@ -84,16 +84,34 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
+
   //сравнивание списков контактов
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement> elements = wd.findElements(By.name("selected[]"));
+//    List<WebElement> elements = wd.findElements(By.cssSelector("td.center")); - не работает
+    List<WebElement> elements = wd.findElements(By.cssSelector("tr.entry")); // - не работает
     for (WebElement element : elements) {
       String name = element.getText();
-      ContactData contact = new ContactData("Имя", null, "Фамилия", null, null, null);
+      String id = element.findElement(By.tagName("input")).getAttribute("id");
+      ContactData contact = new ContactData(id,"Имя", null, "Фамилия", null, null, null);
       //добавляем созданный объект в список
       contacts.add(contact);
     }
     return contacts;
   }
+
+
+  //вот только так работает создание/удаление/модификация контактов
+//  public List<ContactData> getContactList() {
+//    List<ContactData> contacts = new ArrayList<ContactData>();
+//    List<WebElement> elements = wd.findElements(By.name("selected[]"));
+//    for (WebElement element : elements) {
+//      String name = element.getText();
+//      ContactData contact = new ContactData("Имя", null, "Фамилия", null, null, null);
+//      //добавляем созданный объект в список
+//      contacts.add(contact);
+//    }
+//    return contacts;
+//  }
+
 }
