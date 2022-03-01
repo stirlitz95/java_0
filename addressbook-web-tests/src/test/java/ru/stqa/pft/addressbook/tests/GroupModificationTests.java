@@ -18,12 +18,14 @@ public class GroupModificationTests extends TestBase {
     }
     //получение размеров списка с помощью метода "getGroupList()" до создания группы
     List<GroupData> before = app.getGroupHelper().getGroupList();
+    int index = before.size() - 1;
+    //создали локальную переменную "group" чтобы не дублировать код / при модификации гуппы мы указываем новые имя, хедер, футер, а индентификатор "before.get(before.size() - 1).getId()" оставляем старый
+    GroupData group = new GroupData(before.get(index).getId(),"666", "666", "666");
     //метод берет последнюю группу по индексу "before.size() - 1" ( "- 1" потому что нумерация начинается с "0")
-    app.getGroupHelper().selectGroup(before.size() - 1);
+    app.getGroupHelper().selectGroup(index);
     //выбираем группу которую далее будем менять
     app.getGroupHelper().initGroupModification();
-    //создали локальную переменную "group" чтобы не дублировать код / при модификации гуппы мы указываем новые имя, хедер, футер, а индентификатор "before.get(before.size() - 1).getId()" оставляем старый
-    GroupData group = new GroupData(before.get(before.size() - 1).getId(),"666", "666", "666");
+
     app.getGroupHelper().fillGroupFrom(group);
     app.getGroupHelper().submitGroupModification();
     app.getGroupHelper().returnToGroupPage();
@@ -33,7 +35,7 @@ public class GroupModificationTests extends TestBase {
     Assert.assertEquals(after.size(), before.size());
 
     //удаляем старый элемент
-    before.remove(before.size() - 1);
+    before.remove(index);
     //добавляем новый элемент который должен появится появиться после модификации "group"
     before.add(group);
     //пишем лямбда выражение, это будет анонимная функция которая принимает на вход два параметра (две группы которые буде сравнивать) (g1, g2), и выполняем сравнение идентификаторов "-> Integer.compare(g1.getId(), g2.getId())" - это будет возвращаемый результат функции
