@@ -3,7 +3,7 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private String id;
+  private int id;
   private String name;
   private String middleName;
   private String lastName;
@@ -12,8 +12,7 @@ public class ContactData {
   private String group;
 
 
-
-  public ContactData(String id, String name, String middleName, String lastName, String telephoneHome, String mail, String group) {
+  public ContactData(int id, String name, String middleName, String lastName, String telephoneHome, String mail, String group) {
     this.id = id;
     this.name = name;
     this.middleName = middleName;
@@ -23,9 +22,10 @@ public class ContactData {
     this.group = group;
   }
 
+
   //используется когда мешает id при модификации контакта
   public ContactData(String name, String middleName, String lastName, String telephoneHome, String mail, String group) {
-//    this.id = null; - эта строчка не влияет на модификацию, проверить на создании и удалении
+    this.id = Integer.MAX_VALUE;
     this.name = name;
     this.middleName = middleName;
     this.lastName = lastName;
@@ -43,9 +43,13 @@ public class ContactData {
     this.mail = mail;
   }
 
-  public String getId() { return id; }
+  public int getId() {
+    return id;
+  }
 
-  public String getName() { return name; }
+  public String getName() {
+    return name;
+  }
 
   public String getMiddleName() {
     return middleName;
@@ -67,6 +71,22 @@ public class ContactData {
     return group;
   }
 
+  public void setId(int max) {
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return Objects.equals(name, that.name) && Objects.equals(lastName, that.lastName);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, lastName);
+  }
+
 
   @Override
   //метод toString чтобы понимать что написано в ошибке
@@ -77,21 +97,6 @@ public class ContactData {
             ", lastName='" + lastName + '\'' +
             '}';
   }
-
-  @Override
-//мотод иквелс при сравнении объектов будет сравнивать их атрибуты
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(lastName, that.lastName);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, name, lastName);
-  }
-
 
 
 }

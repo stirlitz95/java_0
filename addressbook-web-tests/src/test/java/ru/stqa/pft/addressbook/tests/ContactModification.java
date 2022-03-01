@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.HashSet;
+import java.util.Comparator;
 import java.util.List;
 
 public class ContactModification extends TestBase {
@@ -33,9 +33,18 @@ public class ContactModification extends TestBase {
     //сравниваем кол-во контактов до и после модификации
     Assert.assertEquals(after.size(), before.size());
 
-//    before.remove(before.size() - 1); // с этой строчкой не работает
-//    before.add(contact); //с этой строчкой не работает
-    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+    //удаляем старый элемент
+    before.remove(before.size() - 1);
+    //добавляем новый элемент который должен появится появиться после модификации "contact"
+    before.add(contact);
+    //пишем лямбда выражение, это будет анонимная функция которая принимает на вход два параметра (два контакта которые буде сравнивать) (g1, g2), и выполняем сравнение идентификаторов "-> Integer.compare(g1.getId(), g2.getId())" - это будет возвращаемый результат функции
+    Comparator<? super ContactData> byId=  (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
+    //первый список
+    before.sort(byId);
+    //второй список
+    after.sort(byId);
+    //сравнивает два списка упорядоченные по нашим правилам (и упорядочены одинаково)
+    Assert.assertEquals(before, after);
   }
 
 }
