@@ -10,7 +10,7 @@ public class NavigationHelper extends HelperBase {
     super(wd);
   }
 
-  public void gotoGroupPage() {
+  public void groupPage() {
     //если присутствует элемент "h1"
     if (isElementPresent(By.tagName("h1"))
             // и верно что текст этого заголовка = "Groups"

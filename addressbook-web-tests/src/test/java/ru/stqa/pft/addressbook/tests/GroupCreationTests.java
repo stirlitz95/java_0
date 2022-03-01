@@ -11,14 +11,14 @@ public class GroupCreationTests extends TestBase {
 
   @Test
   public void testGroupCreation() {
-    app.getNavigationHelper().gotoGroupPage();
+    app.goTo().groupPage();
     //получение размеров списка с помощью метода "getGroupList()" до создания группы
-    List<GroupData> before = app.getGroupHelper().getGroupList();
+    List<GroupData> before = app.group().list();
     //создали локальную переменную "group" чтобы не дублировать код
     GroupData group = new GroupData("555", null, "555");
-    app.getGroupHelper().createGroup(group);
+    app.group().create(group);
     //получение размеров списка с помощью метода "getGroupList()" после создания группы
-    List<GroupData> after = app.getGroupHelper().getGroupList();
+    List<GroupData> after = app.group().list();
     //сравниваем размеры списков, должно быть на 1 больше
     Assert.assertEquals(after.size(), before.size() +1);
 

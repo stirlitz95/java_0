@@ -12,7 +12,7 @@ public class ContactDeletion extends TestBase {
   @Test
   public void testContactDeletion() throws Exception {
     //переходим на станицу с контактами
-    app.getNavigationHelper().gotoContactPage();
+    app.goTo().gotoContactPage();
     //если не существует никакого контакта, то сделай его
     if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Имя", "Отчeство", "Фамилия", "880005553535", "xxx.ru"));
@@ -26,7 +26,7 @@ public class ContactDeletion extends TestBase {
     // закрытие диалогового окна которое появляется при удалении контакта (поп апное окошко)
     app.getContactHelper().approveDeletion();
     //переходим на станицу с контактами
-    app.getNavigationHelper().gotoContactPage();
+    app.goTo().gotoContactPage();
     //проверяем кол-во контактов после удаления
     List<ContactData> after = app.getContactHelper().getContactList();
     //сравниваем кол-во контактов до и после удаления

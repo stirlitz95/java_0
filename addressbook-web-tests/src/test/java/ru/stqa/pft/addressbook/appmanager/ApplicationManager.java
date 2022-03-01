@@ -51,7 +51,8 @@ public class ApplicationManager {
     wd.quit();
   }
 
-  public GroupHelper getGroupHelper() {
+  //через него получааем доступ к работе с группами
+  public GroupHelper group() {
     return groupHelper;
   }
 
@@ -63,7 +64,7 @@ public class ApplicationManager {
     return contactHelper;
   }
 
-  public NavigationHelper getNavigationHelper() {
+  public NavigationHelper goTo() {
     return navigationHelper;
   }
 

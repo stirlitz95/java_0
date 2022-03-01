@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
@@ -9,28 +10,28 @@ import java.util.List;
 
 public class GroupModificationTests extends TestBase {
 
-  @Test
-  public void testGroupModification () {
-    app.getNavigationHelper().gotoGroupPage();
-    //если не существует никакой группы, то сделай ее
-    if (! app.getGroupHelper().isThereAGroup()){
-      app.getGroupHelper().createGroup(new GroupData("555", null, "555"));
+  @BeforeMethod
+  //выделили отдельно выполнение предусловий
+  public void ensurePreconditions() {
+    //переходим на станицу с группами
+    app.goTo().groupPage();
+    //если список групп пустой то нужно создать группу
+    if (app.group().list().size() == 0) {
+      app.group().create(new GroupData("555", null, "555"));
     }
+  }
+
+  @Test
+  public void testGroupModification() {
+
     //получение размеров списка с помощью метода "getGroupList()" до создания группы
-    List<GroupData> before = app.getGroupHelper().getGroupList();
+    List<GroupData> before = app.group().list();
     int index = before.size() - 1;
     //создали локальную переменную "group" чтобы не дублировать код / при модификации гуппы мы указываем новые имя, хедер, футер, а индентификатор "before.get(before.size() - 1).getId()" оставляем старый
-    GroupData group = new GroupData(before.get(index).getId(),"666", "666", "666");
-    //метод берет последнюю группу по индексу "before.size() - 1" ( "- 1" потому что нумерация начинается с "0")
-    app.getGroupHelper().selectGroup(index);
-    //выбираем группу которую далее будем менять
-    app.getGroupHelper().initGroupModification();
-
-    app.getGroupHelper().fillGroupFrom(group);
-    app.getGroupHelper().submitGroupModification();
-    app.getGroupHelper().returnToGroupPage();
+    GroupData group = new GroupData(before.get(index).getId(), "666", "666", "666");
+    app.group().modifi(index, group);
     //получение размеров списка с помощью метода "getGroupList()" после создания группы
-    List<GroupData> after = app.getGroupHelper().getGroupList();
+    List<GroupData> after = app.group().list();
     //выполняем проверку, что количество групп должно совпадать с начальным количеством
     Assert.assertEquals(after.size(), before.size());
 
@@ -47,4 +48,5 @@ public class GroupModificationTests extends TestBase {
     //сравнивает два списка упорядоченные по нашим правилам (и упорядочены одинаково)
     Assert.assertEquals(before, after);
   }
+
 }

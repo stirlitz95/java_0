@@ -12,13 +12,13 @@ public class ContactCreation extends TestBase {
   @Test
   public void testNewContact() throws Exception {
     //переходим на станицу с контактами
-    app.getNavigationHelper().gotoContactPage();
+    app.goTo().gotoContactPage();
     List<ContactData> before = app.getContactHelper().getContactList();
-    app.getNavigationHelper().gotoAddNew();
+    app.goTo().gotoAddNew();
     ContactData contact = new ContactData("Имя", "Отчeство", "Фамилия", "880005553535", "xxx.ru", "555");
     app.getContactHelper().fillContact((contact), true);
     app.getContactHelper().submitContact();
-    app.getNavigationHelper().gotoContactPage();
+    app.goTo().gotoContactPage();
     List<ContactData> after = app.getContactHelper().getContactList();
     //проверка:размер списка после добавления равен размер списка +1
     Assert.assertEquals(after.size(), before.size() + 1);

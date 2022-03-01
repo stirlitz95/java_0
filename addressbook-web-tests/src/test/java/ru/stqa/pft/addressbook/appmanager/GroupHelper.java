@@ -51,10 +51,29 @@ public class GroupHelper extends HelperBase {
   }
 
   //создание группы (применяется на случай есои где-то нужно создать группу кроме как GroupCreationTests)
-  public void createGroup(GroupData group) {
+  public void create(GroupData group) {
     initGroupCreation();
     fillGroupFrom(group);
     submitGroupCreation();
+    returnToGroupPage();
+  }
+
+  //действия для модификации группы
+  public void modifi(int index, GroupData group) {
+    //метод берет последнюю группу по индексу "before.size() - 1" ( "- 1" потому что нумерация начинается с "0")
+    selectGroup(index);
+    //выбираем группу которую далее будем менять
+    initGroupModification();
+    fillGroupFrom(group);
+    submitGroupModification();
+    returnToGroupPage();
+  }
+
+  //метод для удаления группы
+  public void delete(int index) {
+    //метод берет последнюю группу по индексу "before.size() - 1" ( "- 1" потому что нумерация начинается с "0")
+   selectGroup(index);
+    deleteSelectedGroups();
     returnToGroupPage();
   }
 
@@ -68,7 +87,7 @@ public class GroupHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<GroupData> getGroupList() {
+  public List<GroupData> list() {
     List<GroupData> groups = new ArrayList<GroupData>();
     //получение списка объектов типа "WebElement"/ найти все элементы которые имеют тег "span" и класс "group"
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));

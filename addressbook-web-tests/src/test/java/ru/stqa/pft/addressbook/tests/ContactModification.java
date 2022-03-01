@@ -12,7 +12,7 @@ public class ContactModification extends TestBase {
   @Test
   public void testEditContact() throws Exception {
     //переходим на станицу с контактами
-    app.getNavigationHelper().gotoContactPage();
+    app.goTo().gotoContactPage();
     //если не существует никакого контакта, то сделай его
     if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Имя", "Отчeство", "Фамилия", "880005553535", "xxx.ru"));
@@ -27,7 +27,7 @@ public class ContactModification extends TestBase {
     //фиксирование изменений нажатием кнопки "update"
     app.getContactHelper().updateContact();
     //переходим на станицу с контактами
-    app.getNavigationHelper().gotoContactPage();
+    app.goTo().gotoContactPage();
     //проверяем кол-во контактов после после модификации
     List<ContactData> after = app.getContactHelper().getContactList();
     //сравниваем кол-во контактов до и после модификации
