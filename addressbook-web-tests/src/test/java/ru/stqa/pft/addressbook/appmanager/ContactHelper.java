@@ -88,8 +88,7 @@ public class ContactHelper extends HelperBase {
   //сравнивание списков контактов
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
-//    List<WebElement> elements = wd.findElements(By.cssSelector("td.center")); - не работает
-    List<WebElement> elements = wd.findElements(By.cssSelector("tr.entry")); // - не работает
+    List<WebElement> elements = wd.findElements(By.name("entry")); // возможно вот так  By.cssSelector("tr[name=entry]")
     for (WebElement element : elements) {
       String name = element.getText();
       String id = element.findElement(By.tagName("input")).getAttribute("id");
