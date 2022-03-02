@@ -21,7 +21,7 @@ public class ContactModification extends TestBase {
     List<ContactData> before = app.getContactHelper().getContactList();
     //выбор контакта на изменение (нажание сразу на значек изменения нужного контакта)
     app.getContactHelper().initContactEdit();
-    ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "ИмяНовое", null, "ФамилияНовая", null, null, null);
+    ContactData contact = new ContactData(before.get(0).getId(), "ИмяНовое", null, "ФамилияНовая", null, null, null);
     //внесение изменений в выбранный контакт
     app.getContactHelper().fillContact((contact), false);
     //фиксирование изменений нажатием кнопки "update"
