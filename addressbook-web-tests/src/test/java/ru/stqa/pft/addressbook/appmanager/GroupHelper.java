@@ -96,9 +96,8 @@ public class GroupHelper extends HelperBase {
       String name = element.getText();
       //ищем элемент в нутри другого / этот идентификатор передаем в конструктор, он используется при сравнении
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      GroupData group = new GroupData(id, name, null, null);
       //добавляем созданный объект в список
-      groups.add(group);
+      groups.add(new GroupData().withId(id).withName(name));
     }
     return groups;
   }

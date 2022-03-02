@@ -15,7 +15,7 @@ public class GroupCreationTests extends TestBase {
     //получение размеров списка с помощью метода "getGroupList()" до создания группы
     List<GroupData> before = app.group().list();
     //создали локальную переменную "group" чтобы не дублировать код
-    GroupData group = new GroupData("555", null, "555");
+    GroupData group = new GroupData().withName("555");
     app.group().create(group);
     //получение размеров списка с помощью метода "getGroupList()" после создания группы
     List<GroupData> after = app.group().list();
@@ -27,7 +27,7 @@ public class GroupCreationTests extends TestBase {
     //int max1 = after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId(); // удалил за ненадобностью, оставил для нашлядности
 
     //предсказывает идентификатор
-    group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
+    group.withId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
     //добавляем в список группу
     before.add(group);
     //функция для сравнения объектов по идентификатору

@@ -17,7 +17,7 @@ public class GroupModificationTests extends TestBase {
     app.goTo().groupPage();
     //если список групп пустой то нужно создать группу
     if (app.group().list().size() == 0) {
-      app.group().create(new GroupData("555", null, "555"));
+      app.group().create(new GroupData().withName("555"));
     }
   }
 
@@ -28,7 +28,7 @@ public class GroupModificationTests extends TestBase {
     List<GroupData> before = app.group().list();
     int index = before.size() - 1;
     //создали локальную переменную "group" чтобы не дублировать код / при модификации гуппы мы указываем новые имя, хедер, футер, а индентификатор "before.get(before.size() - 1).getId()" оставляем старый
-    GroupData group = new GroupData(before.get(index).getId(), "666", "666", "666");
+    GroupData group = new GroupData().withId(before.get(index).getId()).withName("666").withHeader("666").withFooter("666");
     app.group().modifi(index, group);
     //получение размеров списка с помощью метода "getGroupList()" после создания группы
     List<GroupData> after = app.group().list();
