@@ -92,9 +92,8 @@ public class ContactHelper extends HelperBase {
     for (WebElement element : elements) {
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-      ContactData contact = new ContactData(id,"Имя", null, "Фамилия", null, null, null);
       //добавляем созданный объект в список
-      contacts.add(contact);
+      contacts.add(new ContactData(id,"Имя", null, "Фамилия", null, null, null));
     }
     return contacts;
   }
